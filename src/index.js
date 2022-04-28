@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
+import Header from './components/header';
 
 const App = () => (
     <div className="hey">
-        <h1>Hello</h1>
+        <Header/>
     </div>
 )
 
