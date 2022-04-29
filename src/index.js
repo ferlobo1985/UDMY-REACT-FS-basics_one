@@ -6,11 +6,13 @@ import './styles/styles.css'
 import Header from './components/header';
 
 
-const App = () => (
-    <div className="hey">
-        <Header/>
-    </div>
-)
+const App = () => {
+    return(
+        <div className="hey">
+            <Header/>
+        </div>
+    )
+}
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
