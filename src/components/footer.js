@@ -11,7 +11,6 @@ class Footer extends Component {
 
 
     render(){
-        console.log(this.state)
         return(
             <footer>
                 {this.props.footerText}

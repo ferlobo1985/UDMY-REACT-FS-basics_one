@@ -11,17 +11,43 @@ import JSON from './db.json';
 class App extends Component {
 
     state = {
+        active:false,
         news:JSON,
+        filtered:[],
         footerText:'I am a happy footer'
+    }
+
+    getKeywords = (event) => {
+        let keywords = event.target.value;
+        let filtered = this.state.news.filter((item)=>{
+            return item.title.indexOf(keywords) > -1
+        });
+
+        this.setState({
+            filtered
+        })
+    }
+
+
+    changeColor = () => {
+        this.setState({
+            active: this.state.active ? false : true
+        })
     }
 
 
     render(){
+        const {filtered,news,active,footerText} =  this.state;
+
         return(
             <div className="hey">
-                <Header/>
+                <Header
+                    active={active}
+                    changeColor={this.changeColor}
+                    keyword={this.getKeywords}
+                />
                 <NewsList
-                    news={this.state.news}
+                    news={filtered.length === 0 ? news : filtered }
                 >
                     <br/>
                     <h1>I am a children</h1>
@@ -29,7 +55,7 @@ class App extends Component {
 
 
                 <Footer
-                    footerText={this.state.footerText}
+                    footerText={footerText}
                 />
             </div>
         )
