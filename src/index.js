@@ -6,11 +6,13 @@ import Header from './components/header';
 import NewsList from './components/news_list';
 import Footer from './components/footer';
 import JSON from './db.json';
+import Life from './components/lifecycles';
 
 
 class App extends Component {
 
     state = {
+        unmount:true,
         active:false,
         news:JSON,
         filtered:[],
@@ -53,6 +55,14 @@ class App extends Component {
                     <h1>I am a children</h1>
                 </NewsList>
 
+                { this.state.unmount ?
+                     <Life/>
+                :null}
+               <button
+                    onClick={()=> this.setState({unmount:!this.state.unmount})}
+               >
+                   Action
+               </button>
 
                 <Footer
                     footerText={footerText}
